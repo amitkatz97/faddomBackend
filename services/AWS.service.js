@@ -13,7 +13,7 @@ const cloudWatchClient  = new CloudWatchClient({
 })
 
 const ec2Client = new EC2Client({
-    region: process.env.REGION, // Replace with your AWS region
+    region: process.env.REGION, 
     credentials: {
       accessKeyId: process.env.ACCESS_KEY_ID,
       secretAccessKey: process.env.SECRET_ACCESS_KEY,
