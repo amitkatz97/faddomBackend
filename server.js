@@ -1,9 +1,6 @@
 import express, { query } from 'express'
 import { loggerService } from './services/logger.service.js'
 import { cpuRoutes } from './api/cpu.routes.js';
-import { CloudWatchClient, GetMetricDataCommand } from "@aws-sdk/client-cloudwatch"
-import { EC2Client, DescribeInstancesCommand } from "@aws-sdk/client-ec2";
-import { queryCpuUsageFromIp } from './services/AWS.service.js';
 import 'dotenv/config'
 
 import cors from 'cors'
@@ -21,9 +18,8 @@ const corsOptions = {
 const app = express()
 
 //* App Configuration 
-process.env.NODE_ENV !== 'development'?
-    app.use(cors(corsOptions)) :
-    app.use(express.static('public'))
+app.use(cors(corsOptions)) 
+app.use(express.static('public'))
 
 //* App Routes - Because in the exercise there is only one request,
 //  I could create everything on the server file without the API folder.
